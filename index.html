@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Merrythought</title>
+  <style>
+    :root {
+      --orange: #ff7200;
+      --button-size: clamp(54px, 5.5vw, 72px);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      min-height: 100svh;
+      overflow: hidden;
+      background: #ead4b4;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .page-link {
+      position: fixed;
+      inset: 0;
+      display: block;
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .wood {
+      position: absolute;
+      inset: -2.5%;
+      background: url("maple.jpg") center center / cover no-repeat;
+      transform: scale(1.03);
+      animation: slowZoom 10s ease-in-out infinite alternate;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: clamp(58px, 7.2vh, 92px) 24px 40px;
+    }
+
+    .logo {
+      display: block;
+      width: min(72vw, 780px);
+      height: auto;
+      animation: floatLogo 4.8s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    .sale-button {
+      margin-top: clamp(76px, 10vh, 126px);
+      width: var(--button-size);
+      height: var(--button-size);
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: var(--orange);
+      box-shadow: 0 8px 18px rgba(123, 63, 8, .18);
+      opacity: 0;
+      transform: translateY(8px);
+      animation: buttonIn .65s ease .5s forwards;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .sale-button svg {
+      width: 48%;
+      height: 48%;
+      display: block;
+    }
+
+    .page-link:hover .sale-button,
+    .page-link:focus-visible .sale-button {
+      transform: translateY(-3px) scale(1.045);
+      box-shadow: 0 12px 24px rgba(123, 63, 8, .24);
+    }
+
+    .page-link:active .sale-button {
+      transform: scale(.96);
+    }
+
+    .page-link:focus-visible {
+      outline: 4px solid rgba(255, 114, 0, .75);
+      outline-offset: -8px;
+    }
+
+    @keyframes slowZoom {
+      from { transform: scale(1.03); }
+      to   { transform: scale(1.075); }
+    }
+
+    @keyframes floatLogo {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-3px); }
+    }
+
+    @keyframes buttonIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .content {
+        padding-top: 8vh;
+      }
+
+      .logo {
+        width: min(92vw, 680px);
+      }
+
+      .sale-button {
+        margin-top: 8vh;
+        border-radius: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .wood,
+      .logo,
+      .sale-button {
+        animation: none;
+      }
+
+      .wood { transform: none; }
+      .sale-button { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="page-link" href="https://buy.stripe.com/bJe3co0ce7zk6us2EZfYY00" aria-label="Enter Merrythought sale">
+    <div class="wood" aria-hidden="true"></div>
+
+    <main class="content">
+      <img class="logo" src="merrythought.png" alt="Merrythought">
+
+      <span class="sale-button" aria-hidden="true">
+        <svg viewBox="0 0 32 32" role="img" aria-hidden="true">
+          <path d="M8 11h14" fill="none" stroke="#f1d7ae" stroke-width="3.4" stroke-linecap="round"/>
+          <path d="M11 7.5 7.5 11 11 14.5" fill="none" stroke="#f1d7ae" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M24 21H10" fill="none" stroke="#f1d7ae" stroke-width="3.4" stroke-linecap="round"/>
+          <path d="m21 17.5 3.5 3.5-3.5 3.5" fill="none" stroke="#f1d7ae" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </main>
+  </a>
+</body>
+</html>
