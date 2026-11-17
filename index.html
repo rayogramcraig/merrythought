@@ -1,163 +1,63 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Merrythought</title>
-  <style>
-    :root {
-      --orange: #ff7200;
-      --button-size: clamp(54px, 5.5vw, 72px);
-    }
-
-    * { box-sizing: border-box; }
-
-    html, body {
-      width: 100%;
-      min-height: 100%;
-      margin: 0;
-    }
-
-    body {
-      min-height: 100svh;
-      overflow: hidden;
-      background: #ead4b4;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .page-link {
-      position: fixed;
-      inset: 0;
-      display: block;
-      color: inherit;
-      text-decoration: none;
-      cursor: pointer;
-      overflow: hidden;
-    }
-
-    .wood {
-      position: absolute;
-      inset: -2.5%;
-      background: url("maple.jpg") center center / cover no-repeat;
-      transform: scale(1.03);
-      animation: slowZoom 10s ease-in-out infinite alternate;
-    }
-
-    .content {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      min-height: 100svh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: clamp(58px, 7.2vh, 92px) 24px 40px;
-    }
-
-    .logo {
-      display: block;
-      width: min(72vw, 780px);
-      height: auto;
-      animation: floatLogo 4.8s ease-in-out infinite;
-      transform-origin: center;
-    }
-
-    .sale-button {
-      margin-top: clamp(76px, 10vh, 126px);
-      width: var(--button-size);
-      height: var(--button-size);
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: var(--orange);
-      box-shadow: 0 8px 18px rgba(123, 63, 8, .18);
-      opacity: 0;
-      transform: translateY(8px);
-      animation: buttonIn .65s ease .5s forwards;
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-
-    .sale-button svg {
-      width: 48%;
-      height: 48%;
-      display: block;
-    }
-
-    .page-link:hover .sale-button,
-    .page-link:focus-visible .sale-button {
-      transform: translateY(-3px) scale(1.045);
-      box-shadow: 0 12px 24px rgba(123, 63, 8, .24);
-    }
-
-    .page-link:active .sale-button {
-      transform: scale(.96);
-    }
-
-    .page-link:focus-visible {
-      outline: 4px solid rgba(255, 114, 0, .75);
-      outline-offset: -8px;
-    }
-
-    @keyframes slowZoom {
-      from { transform: scale(1.03); }
-      to   { transform: scale(1.075); }
-    }
-
-    @keyframes floatLogo {
-      0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-3px); }
-    }
-
-    @keyframes buttonIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 700px) {
-      .content {
-        padding-top: 8vh;
-      }
-
-      .logo {
-        width: min(92vw, 680px);
-      }
-
-      .sale-button {
-        margin-top: 8vh;
-        border-radius: 12px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .wood,
-      .logo,
-      .sale-button {
-        animation: none;
-      }
-
-      .wood { transform: none; }
-      .sale-button { opacity: 1; transform: none; }
-    }
-  </style>
+  <meta name="theme-color" content="#f1dfbd">
+  <meta name="description" content="Merrythought — a center for the arts in Tivoli, New York. Theater, education, and hospitality.">
+  <title>Merrythought — Center for the Arts in Tivoli, New York</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
-<body>
-  <a class="page-link" href="https://buy.stripe.com/bJe3co0ce7zk6us2EZfYY00" aria-label="Enter Merrythought sale">
-    <div class="wood" aria-hidden="true"></div>
+<body data-page="home">
+  <div class="site-shell">
+    <header class="brand" aria-label="Merrythought">
+      <a href="#home" class="brand-link" id="home-link" aria-label="Merrythought home">
+        <img class="sun" src="assets/sun.png" alt="" aria-hidden="true">
+        <img class="wordmark" src="assets/logo.png" alt="Merrythought">
+      </a>
+    </header>
 
-    <main class="content">
-      <img class="logo" src="merrythought.png" alt="Merrythought">
+    <p class="tagline">CENTER FOR THE ARTS <span>IN TIVOLI, NEW YORK</span></p>
 
-      <span class="sale-button" aria-hidden="true">
-        <svg viewBox="0 0 32 32" role="img" aria-hidden="true">
-          <path d="M8 11h14" fill="none" stroke="#f1d7ae" stroke-width="3.4" stroke-linecap="round"/>
-          <path d="M11 7.5 7.5 11 11 14.5" fill="none" stroke="#f1d7ae" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M24 21H10" fill="none" stroke="#f1d7ae" stroke-width="3.4" stroke-linecap="round"/>
-          <path d="m21 17.5 3.5 3.5-3.5 3.5" fill="none" stroke="#f1d7ae" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
+    <main class="main-content" id="main-content">
+      <nav class="primary-navigation" aria-label="Main navigation">
+        <button class="nav-label label-vision" data-target="vision" aria-haspopup="dialog">VISION</button>
+        <button class="nav-label label-involved" data-target="involved">HOW TO GET INVOLVED</button>
+        <button class="nav-label label-events" data-target="events">EVENTS</button>
+      </nav>
+      <div class="involved-links" id="involved-links" aria-label="Ways to get involved">
+        <a class="arrow-link" href="https://buy.stripe.com/bJe3co0ce7zk6us2EZfYY00"><img src="assets/pointer2.png" alt="" aria-hidden="true"><span>DONATE</span></a>
+        <a class="arrow-link" href="mailto:info@merrythought.info"><img src="assets/pointer2.png" alt="" aria-hidden="true"><span>CONTACT US</span></a>
+      </div>
+      <div class="events-note" id="events-note" aria-live="polite">
+        <p>UPCOMING EVENTS WILL BE ANNOUNCED HERE.</p>
+        <a href="mailto:info@merrythought.info?subject=Merrythought%20Events">GET IN TOUCH</a>
+      </div>
     </main>
-  </a>
+    <footer class="footer-nav" aria-label="Page navigation">
+      <button type="button" data-target="home" class="footer-home">MERRYTHOUGHT</button>
+      <span>THEATER <i>·</i> EDUCATION <i>·</i> HOSPITALITY</span>
+    </footer>
+  </div>
+
+  <div class="modal" id="vision-modal" role="dialog" aria-modal="true" aria-labelledby="vision-title" aria-hidden="true" tabindex="-1">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-inner">
+      <div class="modal-topbar">
+        <h1 id="vision-title">VISION</h1>
+        <div class="modal-actions">
+          <a href="assets/Merrythought-Vision.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open vision PDF in a new tab">OPEN PDF <span aria-hidden="true">↗</span></a>
+          <button type="button" id="close-vision" class="close-button" aria-label="Close vision PDF">×</button>
+        </div>
+      </div>
+      <div class="viewer-row">
+        <button type="button" class="page-arrow arrow-prev" id="prev-page" aria-label="Previous page"><span></span></button>
+        <div class="pdf-frame" id="pdf-frame"><img id="pdf-viewer" alt="Merrythought vision presentation, page 1 of 12" src="assets/pages/vision-01.webp" width="1920" height="1080"></div>
+        <button type="button" class="page-arrow arrow-next" id="next-page" aria-label="Next page"><span></span></button>
+      </div>
+      <div class="page-controls"><span id="page-status">01 / 12</span><span class="page-instruction">USE ARROWS TO EXPLORE</span></div>
+    </div>
+  </div>
 </body>
 </html>
